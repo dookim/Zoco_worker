@@ -79,22 +79,63 @@ pid_file.close()
 
 print " [*] Waiting for messages. To exit press CTRL+C"
 
+state_selling = 'selling';
+state_sold = 'sold'
+email = 'email';
+isbn = 'isbn';
+author = 'author';
+ori_price = 'ori_price';
+price = 'price';
+scribble = 'scribble';
+check_answer = 'check_answer'
+have_answer = 'have_answer'
+img_str = 'img_str'
+
 def save_login(data_body):
     session.add(User(email=data_body['email'], univ=data_body['univ']));
     session.flush();
+#값의 변동을 유지하는 함수
+def change_boolean(data_body):
+    if data_body[scribble] == 'true':
+        data_body[scribble] = 1
+    else :
+        data_body[scribble] = 0
+
+    if data_body[check_answer] == 'true':
+        data_body[check_answer] = 1
+    else :
+        data_body[check_answer] = 0
+
+    if data_body[have_answer] == 'true':
+        data_body[have_answer] = 1
+    else :
+        data_body[have_answer] = 0
+
 def save_book(data_body):
+
+    change_boolean(data_body);
+
+    #in order to maintain one transacetion, we should use one flush method
     book=Book(
-        email=data_body['email'],
-        isbn=data_body['isbn'],
-        author=data_body['author'],
-        ori_price=data_body['ori_price'],
-        price=data_body['price'],
-        scribble=data_body['scribble'],
-        check_answer=data_body['check_answer'],
-        has_answer=data_body['has_answer'],
-        state=data_body['selling']
+        email=data_body[email],
+        isbn=data_body[isbn],
+        author=data_body[author],
+        ori_price=data_body[ori_price],
+        price=data_body[price],
+        scribble=data_body[scribble],
+        check_answer=data_body[check_answer],
+        have_answer=data_body[have_answer],
+        state=state_selling
         )
-    session.add(Book());
+    session.add(book);
+    session.flush();
+
+    #book image 저장
+    bookimage = Bookimage(
+        bookid=book.bookid,
+        bookimage=base64.b64decode(data_body['img_str'])
+        )
+    session.add(bookimage);
     session.flush();
 
 def callback(ch, method, properties,body):
@@ -111,12 +152,14 @@ def callback(ch, method, properties,body):
         print e
         return
 
+    print data_body
+    '''
     if tag == 'login':
         save_login(data_body);
 
     elif tag == 'receive_exception':
         save_book(data_body);
-
+    '''
 def finalize():
     connection.close()
     sys.exit(1)
