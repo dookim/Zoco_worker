@@ -1,0 +1,3 @@
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5672
+ERROR:root:(OperationalError) (2006, 'MySQL server has gone away') 'INSERT INTO user (email, univ) VALUES (%s, %s)' (u'doo871128@gmail.com', u'hufs')
+INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown

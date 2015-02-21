@@ -19,16 +19,16 @@ try :
 
 except Exception as e:
     print e
-    print "cannot bind DB using Alchemy"
+    print "-----------------cannot bind DB using Alchemy---------------------"
+print "meta data : -----------------" + str(metadata)
 
-#SCHEMA BIND시키는 부분
 class User(Base):
-    __table__ = Table('user', metadata, autoload=True)
+    __table__ = Table('users', metadata, autoload=True)
 
 class Book(Base):
-    __table__ = Table('book', metadata, autoload=True)
+    __table__ = Table('books', metadata, autoload=True)
 
 class Bookimage(Base):
-    __table__ = Table('bookimage', metadata, autoload=True)
+    __table__ = Table('bookimages', metadata, autoload=True)
 
 print "end of alchemy init"

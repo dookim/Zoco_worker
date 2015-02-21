@@ -1,0 +1,3 @@
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5672
+ERROR:root:(IntegrityError) (1062, "Duplicate entry 'doo871128@gmail.com' for key 'PRIMARY'") 'INSERT INTO user (email, univ) VALUES (%s, %s)' (u'doo871128@gmail.com', u'hufs')
+INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown

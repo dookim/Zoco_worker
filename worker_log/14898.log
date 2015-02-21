@@ -1,0 +1,3 @@
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5672
+ERROR:root:(DataError) (1406, "Data too long for column 'isbn' at row 1") 'INSERT INTO book (email, isbn, author, ori_price, price, scribble, check_answer, have_answer, state) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)' (u'doo871128@gmail.com', u'897914931X 9788979149319', u'\uc575\uac94 \ub808\ub108\ub4dc', 25000, 25000, False, False, False, 'selling')
+INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown

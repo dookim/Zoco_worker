@@ -1,0 +1,4 @@
+INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5672
+ERROR:root:(OperationalError) (1366, "Incorrect string value: '\\xEC\\x95\\xB5\\xEA\\xB2\\x94...' for column 'author' at row 1") 'INSERT INTO book (email, isbn, author, ori_price, price, scribble, check_answer, have_answer, state) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)' (u'doo871128@gmail.com', u'897914931X 9788979149319', u'\uc575\uac94 \ub808\ub108\ub4dc', 25000, 25000, False, False, False, 'selling')
+WARNING:pika.adapters.blocking_connection:Received Channel.Close, closing: <METHOD(['channel_number=1', 'frame_type=1', "method=<Channel.Close(['class_id=60', 'method_id=90', 'reply_code=406', 'reply_text=PRECONDITION_FAILED - unknown delivery tag 2'])>"])>
+INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown
