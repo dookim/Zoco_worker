@@ -97,7 +97,7 @@ def save_user(data_body):
     enc = hashlib.sha1()
     enc.update(password)
     password=enc.hexdigest()
-    session.add(User(email=data_body['email'], univ=data_body['univ'],provider=data_body['provider'],password));
+    session.add(User(email=data_body['email'], univ=data_body['univ'],provider=data_body['provider'],password=password));
     session.flush();
 #값의 변동을 유지하는 함수
 def change_boolean(data_body):
@@ -166,6 +166,9 @@ def callback(ch, method, properties,body):
     except IntegrityError as e:
          print e;
 	 return
+    except Exception as e:
+         print e;
+	 return;
 
 def finalize():
     connection.close()

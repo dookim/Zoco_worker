@@ -1,3 +1,2 @@
 INFO:pika.adapters.base_connection:Connecting to 127.0.0.1:5672
-ERROR:root:'email'
 INFO:pika.adapters.blocking_connection:Closing connection (200): Normal shutdown
