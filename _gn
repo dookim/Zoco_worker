@@ -93,10 +93,6 @@ img_str = 'img_str'
 title = 'title'
 
 def save_user(data_body):
-    nickname = data_body['nickname']
-    user =  session.query(User).filter_by(nickname = nickname).first()
-    if user is not None:
-        return
     password = data_body['password']
     enc = hashlib.sha1()
     enc.update(password)
